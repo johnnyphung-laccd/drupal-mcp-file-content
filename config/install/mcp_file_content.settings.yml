@@ -1,0 +1,27 @@
+enabled_file_types:
+  pdf: true
+  docx: true
+  doc: true
+  pptx: true
+  ppt: true
+  images: true
+  text: true
+content_defaults:
+  content_type: page
+  publish_status: false
+ocr:
+  auto_detect: true
+  language: eng
+  tesseract_path: /usr/bin/tesseract
+extraction:
+  max_file_size: 52428800
+  extract_images: true
+  libreoffice_path: /usr/bin/soffice
+accessibility:
+  enforcement_enabled: true
+  strictness: standard
+  contrast_threshold: aa
+  auto_remediate_headings: true
+  auto_remediate_tables: true
+  auto_remediate_lists: true
+  attach_report: true

@@ -1,0 +1,33 @@
+access mcp file resources:
+  title: 'Access MCP file resources'
+  description: 'List and read files via MCP Resources.'
+
+extract file content via mcp:
+  title: 'Extract file content via MCP'
+  description: 'Use the extract_file_content tool.'
+
+create content via mcp:
+  title: 'Create content via MCP'
+  description: 'Use the create_node_from_content tool.'
+
+validate accessibility via mcp:
+  title: 'Validate accessibility via MCP'
+  description: 'Use the validate_accessibility tool.'
+
+generate accessibility report via mcp:
+  title: 'Generate accessibility report via MCP'
+  description: 'Use the generate_accessibility_report tool.'
+
+batch convert files via mcp:
+  title: 'Batch convert files via MCP'
+  description: 'Use the batch_convert_files tool.'
+
+bypass accessibility enforcement:
+  title: 'Bypass accessibility enforcement'
+  description: 'Create nodes without WCAG validation.'
+  restrict access: true
+
+administer mcp file content:
+  title: 'Administer MCP File Content'
+  description: 'Access the MCP File Content configuration page.'
+  restrict access: true

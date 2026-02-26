@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for MCP File Content module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function mcp_file_content_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.mcp_file_content':
+      $output = '<h2>MCP File Content</h2>';
+      $output .= '<p>This module enables AI clients via the Model Context Protocol (MCP) to discover files on a Drupal site, extract their content, remediate accessibility issues, and create ADA-compliant (WCAG 2.1 AA) Drupal content nodes.</p>';
+      $output .= '<h3>Features</h3>';
+      $output .= '<ul>';
+      $output .= '<li>Extract content from PDF, DOCX, DOC, PPTX, PPT, images, and text files</li>';
+      $output .= '<li>Validate content against WCAG 2.1 AA accessibility standards</li>';
+      $output .= '<li>Auto-remediate common accessibility issues (heading hierarchy, table headers, pseudo-lists)</li>';
+      $output .= '<li>Create Drupal content nodes with accessibility enforcement</li>';
+      $output .= '<li>Batch process multiple files</li>';
+      $output .= '<li>Generate accessibility reports in JSON, HTML, or CSV</li>';
+      $output .= '</ul>';
+      return $output;
+  }
+}

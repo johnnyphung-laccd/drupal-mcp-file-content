@@ -1,0 +1,12 @@
+name: 'MCP File Content'
+type: module
+description: 'Enables AI clients via MCP to discover files, extract content, remediate accessibility issues, and create ADA-compliant Drupal content nodes.'
+package: 'MCP'
+core_version_requirement: ^11
+dependencies:
+  - drupal:media
+  - drupal:file
+  - drupal:node
+  - mcp:mcp
+  - tool:tool
+configure: mcp_file_content.settings

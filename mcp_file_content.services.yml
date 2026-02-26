@@ -1,0 +1,92 @@
+services:
+  # Extractors
+  mcp_file_content.extractor.plain_text:
+    class: Drupal\mcp_file_content\Service\Extractor\PlainTextExtractor
+
+  mcp_file_content.extractor.pdf:
+    class: Drupal\mcp_file_content\Service\Extractor\PdfExtractor
+    arguments: ['@config.factory']
+
+  mcp_file_content.extractor.docx:
+    class: Drupal\mcp_file_content\Service\Extractor\DocxExtractor
+    arguments: ['@config.factory']
+
+  mcp_file_content.extractor.pptx:
+    class: Drupal\mcp_file_content\Service\Extractor\PptxExtractor
+    arguments: ['@config.factory']
+
+  mcp_file_content.extractor.image:
+    class: Drupal\mcp_file_content\Service\Extractor\ImageExtractor
+    arguments: ['@config.factory']
+
+  # Extractor Manager
+  mcp_file_content.file_extractor_manager:
+    class: Drupal\mcp_file_content\Service\FileExtractorManager
+    arguments:
+      - '@mcp_file_content.extractor.plain_text'
+      - '@mcp_file_content.extractor.pdf'
+      - '@mcp_file_content.extractor.docx'
+      - '@mcp_file_content.extractor.pptx'
+      - '@mcp_file_content.extractor.image'
+      - '@config.factory'
+      - '@entity_type.manager'
+
+  # Accessibility Checkers
+  mcp_file_content.color_contrast_checker:
+    class: Drupal\mcp_file_content\Service\ColorContrastChecker
+
+  mcp_file_content.heading_hierarchy_analyzer:
+    class: Drupal\mcp_file_content\Service\HeadingHierarchyAnalyzer
+
+  mcp_file_content.alt_text_requirement_checker:
+    class: Drupal\mcp_file_content\Service\AltTextRequirementChecker
+
+  mcp_file_content.link_text_checker:
+    class: Drupal\mcp_file_content\Service\LinkTextChecker
+
+  mcp_file_content.list_markup_checker:
+    class: Drupal\mcp_file_content\Service\ListMarkupChecker
+
+  mcp_file_content.table_accessibility_checker:
+    class: Drupal\mcp_file_content\Service\TableAccessibilityChecker
+
+  mcp_file_content.language_checker:
+    class: Drupal\mcp_file_content\Service\LanguageChecker
+
+  # Accessibility Validator (orchestrator)
+  mcp_file_content.accessibility_validator:
+    class: Drupal\mcp_file_content\Service\AccessibilityValidator
+    arguments:
+      - '@mcp_file_content.color_contrast_checker'
+      - '@mcp_file_content.heading_hierarchy_analyzer'
+      - '@mcp_file_content.alt_text_requirement_checker'
+      - '@mcp_file_content.link_text_checker'
+      - '@mcp_file_content.list_markup_checker'
+      - '@mcp_file_content.table_accessibility_checker'
+      - '@mcp_file_content.language_checker'
+      - '@config.factory'
+
+  # Accessibility Remediator
+  mcp_file_content.accessibility_remediator:
+    class: Drupal\mcp_file_content\Service\AccessibilityRemediator
+    arguments:
+      - '@mcp_file_content.heading_hierarchy_analyzer'
+      - '@mcp_file_content.table_accessibility_checker'
+      - '@mcp_file_content.list_markup_checker'
+      - '@config.factory'
+
+  # Report Generator
+  mcp_file_content.accessibility_report_generator:
+    class: Drupal\mcp_file_content\Service\AccessibilityReportGenerator
+    arguments:
+      - '@mcp_file_content.accessibility_validator'
+
+  # Node Creator
+  mcp_file_content.node_creator:
+    class: Drupal\mcp_file_content\Service\NodeCreator
+    arguments:
+      - '@entity_type.manager'
+      - '@mcp_file_content.accessibility_validator'
+      - '@config.factory'
+      - '@current_user'
+      - '@file_system'

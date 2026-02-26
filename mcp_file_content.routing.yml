@@ -1,0 +1,7 @@
+mcp_file_content.settings:
+  path: '/admin/config/services/mcp-file-content'
+  defaults:
+    _form: '\Drupal\mcp_file_content\Form\SettingsForm'
+    _title: 'MCP File Content Settings'
+  requirements:
+    _permission: 'administer mcp file content'

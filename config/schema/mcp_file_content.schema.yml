@@ -1,0 +1,90 @@
+mcp_file_content.settings:
+  type: config_object
+  label: 'MCP File Content settings'
+  mapping:
+    enabled_file_types:
+      type: mapping
+      label: 'Enabled file types'
+      mapping:
+        pdf:
+          type: boolean
+          label: 'PDF'
+        docx:
+          type: boolean
+          label: 'DOCX'
+        doc:
+          type: boolean
+          label: 'DOC'
+        pptx:
+          type: boolean
+          label: 'PPTX'
+        ppt:
+          type: boolean
+          label: 'PPT'
+        images:
+          type: boolean
+          label: 'Images'
+        text:
+          type: boolean
+          label: 'Text'
+    content_defaults:
+      type: mapping
+      label: 'Content defaults'
+      mapping:
+        content_type:
+          type: string
+          label: 'Content type'
+        publish_status:
+          type: boolean
+          label: 'Publish status'
+    ocr:
+      type: mapping
+      label: 'OCR settings'
+      mapping:
+        auto_detect:
+          type: boolean
+          label: 'Auto-detect scanned documents'
+        language:
+          type: string
+          label: 'OCR language'
+        tesseract_path:
+          type: string
+          label: 'Tesseract binary path'
+    extraction:
+      type: mapping
+      label: 'Extraction settings'
+      mapping:
+        max_file_size:
+          type: integer
+          label: 'Maximum file size in bytes'
+        extract_images:
+          type: boolean
+          label: 'Extract images'
+        libreoffice_path:
+          type: string
+          label: 'LibreOffice binary path'
+    accessibility:
+      type: mapping
+      label: 'Accessibility settings'
+      mapping:
+        enforcement_enabled:
+          type: boolean
+          label: 'Enable accessibility enforcement'
+        strictness:
+          type: string
+          label: 'Strictness level'
+        contrast_threshold:
+          type: string
+          label: 'Contrast threshold'
+        auto_remediate_headings:
+          type: boolean
+          label: 'Auto-remediate heading hierarchy'
+        auto_remediate_tables:
+          type: boolean
+          label: 'Auto-remediate table headers'
+        auto_remediate_lists:
+          type: boolean
+          label: 'Auto-remediate pseudo-lists'
+        attach_report:
+          type: boolean
+          label: 'Attach accessibility report'

@@ -1,0 +1,6 @@
+mcp_file_content.settings:
+  title: 'MCP File Content'
+  description: 'Configure file extraction, accessibility enforcement, and content creation settings for MCP.'
+  route_name: mcp_file_content.settings
+  parent: system.admin_config_services
+  weight: 10
